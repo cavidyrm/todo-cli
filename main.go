@@ -233,6 +233,7 @@ func loadUsers() {
 	dataStr := string(data)
 	userSlice := strings.Split(dataStr, "\n")
 	for _, u := range userSlice {
+		fmt.Println(u)
 		if u[0] != '{' && u[len(u)-1] != '}' {
 			continue
 		}
@@ -241,28 +242,29 @@ func loadUsers() {
 		if uError != nil {
 			fmt.Println("Unmarshalling error:", uError)
 		}
+		userStorage = append(userStorage, userStruct)
 	}
 
 }
 func writeUserToFile(user User) {
 	var file *os.File
-	file, err := os.OpenFile(userStoragePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	file, err := os.OpenFile(userStoragePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0777)
 	if err != nil {
 		fmt.Println("Error:", err)
 
 		return
 	}
 	var data []byte
-	data = []byte(fmt.Sprintf("id: %d, name: %s, email: %s, password: %s\n ",
+	data = []byte(fmt.Sprintf("id: %d, name: %s, shot: %s, password: %s, \n",
 		user.ID, user.Name, user.Email, user.Password))
-
+	fmt.Println(data)
 	var jErr error
 
 	data, jErr = json.Marshal(user)
 	if jErr != nil {
 		fmt.Println("Marshaling Error:", jErr)
 	}
-
+	data = append(data, []byte("\n")...)
 	_, wErr := file.Write(data)
 	if wErr != nil {
 		fmt.Println("Error:", wErr)
