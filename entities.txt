@@ -1,0 +1,31 @@
+**Category
+- title
+-
+Behavior(category)
+- create a new category
+-list user categories
+
+**Task
+- title
+- due date
+- category
+
+Behavior(task)
+- create a new task
+- list user today task
+- list user tasks by date
+- change task status done/undone
+- edit a task
+
+**User
+- id
+Behavior(user)
+
+User story
+- user should be registered
+- user can create a new category
+- user can add a new task
+- user can see the list of categories
+- user can see the list of today tasks
+- user can see the list of tasks by date
+- user can done/undone task
