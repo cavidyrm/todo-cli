@@ -3,7 +3,7 @@
 -
 Behavior(category)
 - create a new category
--list user categories
+-list User categories
 
 **Task
 - title
@@ -12,21 +12,24 @@ Behavior(category)
 
 Behavior(task)
 - create a new task
-- list user today task
-- list user tasks by date
+- list User today task
+- list User tasks by date
 - change task status done/undone
 - edit a task
 
 **User
 - id
-Behavior(user)
+Behaviors(User)
+- Register user
+- Login user
 
 User story
-- user should be registered
-- user can create a new category
-- user can add a new task
-- user can see the list of categories
-- user can see the list of today tasks
-- user can see the list of tasks by date
-- user can done/undone task
+- User should be registered
+- User should be able to login
+- User can create a new category
+- User can add a new task
+- User can see the list of categories
+- User can see the list of today tasks
+- User can see the list of tasks by date
+- User can done/undone task
 
