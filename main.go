@@ -2,6 +2,8 @@ package main
 
 import (
 	"bufio"
+	"crypto/md5"
+	"encoding/hex"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -152,7 +154,7 @@ func registerUser() {
 		ID:       len(userStorage) + 1,
 		Name:     name,
 		Email:    email,
-		Password: password,
+		Password: hashthepassword(password),
 	}
 
 	userStorage = append(userStorage, user)
@@ -274,4 +276,8 @@ func writeUserToFile(user User) {
 		fmt.Println("Error:", cErr)
 	}
 
+}
+func hashthepassword(password string) string {
+	hash := md5.Sum([]byte(password))
+	return hex.EncodeToString(hash[:])
 }
